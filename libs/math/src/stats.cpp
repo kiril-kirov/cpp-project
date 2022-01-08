@@ -12,8 +12,8 @@ float average(const vector<float>& points)
 {
     assert(!points.empty());
 
-    const auto sum = accumulate(points.begin(), points.end(), 0.);
-    return sum / points.size();
+    const auto sum = accumulate(points.begin(), points.end(), 0.f);
+    return sum / static_cast<float>(points.size());
 }
 
 float median(vector<float> points)

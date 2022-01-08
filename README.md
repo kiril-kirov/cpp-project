@@ -68,10 +68,8 @@ TODO - update at the end of each stage, right before creating the git tag.
 This is a work-in-progress project. All of the above is just the current plan. The TODO list is below.
 
 First:
-* [Linux] set compiler options, having in mind two build configurations - debug and release;
-* [Linux] add unit tests: Catch2; integrate with cmake;
-* [Linux] introduce clang-format;
-* [Windows] make it work on Windows as weel;
+* add unit tests: Catch2; integrate with cmake;
+* introduce clang-format;
 * update the HOWTOs section.
 
 This will be version 0.1 (git tag) - it's basically the bare minimum for a C++ project.

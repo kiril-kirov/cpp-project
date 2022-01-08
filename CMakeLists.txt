@@ -8,7 +8,14 @@ project(${PROJECT_NAME} VERSION 0.1
                         DESCRIPTION "A sample C++ project with integrated common tools"
                         LANGUAGES CXX)
 
-set (CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/" ${CMAKE_MODULE_PATH})
+include(build_configuration)
+include(compiler_options)
 
 add_subdirectory(libs)
 add_subdirectory(app)
