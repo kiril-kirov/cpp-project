@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.16)
+
+set(PROJECT_NAME cpp_project)
+
+cmake_policy(SET CMP0054 NEW)
+
+project(${PROJECT_NAME} VERSION 0.1
+                        DESCRIPTION "A sample C++ project with integrated common tools"
+                        LANGUAGES CXX)
+
+set (CMAKE_CXX_STANDARD 17)
+
+add_subdirectory(libs)
+add_subdirectory(app)
