@@ -8,4 +8,4 @@ add_library(${PROJECT_NAME} STATIC
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_include_directories(${PROJECT_NAME} PRIVATE include/math)
 
-add_subdirectory(tests)
+add_unit_tests(${PROJECT_NAME})

@@ -11,4 +11,4 @@ target_include_directories(${PROJECT_NAME} PRIVATE include/invest)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC math)
 
-add_subdirectory(tests)
+add_unit_tests(${PROJECT_NAME})
