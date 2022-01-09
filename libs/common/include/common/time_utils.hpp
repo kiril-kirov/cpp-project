@@ -1,5 +1,5 @@
-#ifndef CPP_PROJECT_COMMON_COMMON_H
-#define CPP_PROJECT_COMMON_COMMON_H
+#ifndef CPP_PROJECT_COMMON_TIME_UTILS_H
+#define CPP_PROJECT_COMMON_TIME_UTILS_H
 
 #include <chrono>
 #include <functional>

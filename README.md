@@ -68,13 +68,14 @@ TODO - update at the end of each stage, right before creating the git tag.
 This is a work-in-progress project. All of the above is just the current plan. The TODO list is below.
 
 First:
-* add unit tests: Catch2; integrate with cmake;
-* introduce clang-format;
-* update the HOWTOs section.
+* precompiled header for the unit test library
+* introduce lightweight cmake wrapper python script
+* update the HOWTOs section
 
 This will be version 0.1 (git tag) - it's basically the bare minimum for a C++ project.
 
 Next introduce:
+* clang-format (formatter);
 * clang-tidy (static analysis);
 * clang static analyzer;
 * cppcheck (static analysis);

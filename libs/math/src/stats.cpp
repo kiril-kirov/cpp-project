@@ -42,6 +42,7 @@ float median_sorted(const vector<float>& points)
     if (points.size() % 2 == 1)
         return points[mid];
 
-    return (points[mid - 1] + points[mid] + 1) / 2;
+    return (points[mid - 1] + points[mid]) / 2;
 }
+
 }

@@ -5,12 +5,6 @@
 
 namespace cpp_project::invest
 {
-struct date
-{
-    std::uint8_t day = {};
-    std::uint8_t month = {};
-    std::uint16_t year = {};
-};
 
 struct candle
 {
@@ -18,12 +12,6 @@ struct candle
     float open_price = .0;
     float close_price = .0;
     float high_price = .0;
-};
-
-struct price_point
-{
-    date when;
-    candle price;
 };
 
 }  // namespace cpp_project::invest

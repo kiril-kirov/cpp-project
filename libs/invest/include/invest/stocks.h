@@ -11,13 +11,13 @@ class stocks
 {
 public:
     // ordered
-    stocks& feed_history(const price_point& price);
-    stocks& feed_history(price_point&& price);
+    stocks& feed_history(const candle& price);
+    stocks& feed_history(candle&& price);
 
     float average_price() const;
 
 private:
-    using stocks_container = std::vector<price_point>;
+    using stocks_container = std::vector<candle>;
     stocks_container history;
 };
 
