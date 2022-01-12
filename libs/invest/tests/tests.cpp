@@ -15,5 +15,5 @@ TEST_CASE("average", "invest")
         feed_history({ 1.2f, 1.3f, 1.4f, 1.6f}).   // 1.375
         feed_history({ 1.20f, 1.3f, 1.3f, 1.3f});  // 1.275
 
-    REQUIRE(equal(company.average_price(), 1.3f));
+    REQUIRE(equal(company.calculate_average_price(), 1.3f));
 }

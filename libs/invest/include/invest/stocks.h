@@ -14,11 +14,11 @@ public:
     stocks& feed_history(const candle& price);
     stocks& feed_history(candle&& price);
 
-    float average_price() const;
+    float calculate_average_price() const;
 
 private:
-    using stocks_container = std::vector<candle>;
-    stocks_container history;
+    using price_history = std::vector<candle>;
+    price_history history;
 };
 
 }  // namespace cpp_project::invest

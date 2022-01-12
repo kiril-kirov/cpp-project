@@ -1,8 +1,6 @@
 #ifndef CPP_PROJECT_LIB_INVEST_TYPES_H
 #define CPP_PROJECT_LIB_INVEST_TYPES_H
 
-#include <cstdint>
-
 namespace cpp_project::invest
 {
 

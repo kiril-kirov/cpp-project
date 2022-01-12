@@ -21,12 +21,12 @@ stocks& stocks::feed_history(candle&& price)
      return *this;
 }
 
-float stocks::average_price() const
+float stocks::calculate_average_price() const
 {
     std::vector<float> avg_price_points;
     avg_price_points.reserve(history.size());
     std::transform(history.begin(), history.end(), std::back_inserter(avg_price_points),
-                   [](const auto& p) { return helper::average_price(p); });
+                   [](const auto& p) { return helper::calculate_average_price(p); });
 
     return stats::average(avg_price_points);
 }

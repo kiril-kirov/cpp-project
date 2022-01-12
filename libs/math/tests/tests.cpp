@@ -4,9 +4,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch2/catch.hpp"
 
-#include <numeric>
-#include <cmath>
-
 using namespace cpp_project::stats;
 using namespace cpp_project::common;
 

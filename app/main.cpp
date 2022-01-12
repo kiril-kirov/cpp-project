@@ -4,6 +4,7 @@
 
 using namespace cpp_project::invest;
 using namespace cpp_project::common;
+using ns = std::chrono::nanoseconds;
 
 int main()
 {
@@ -15,7 +16,9 @@ int main()
         feed_history({ 1.2f, 1.4f, 1.4f, 1.5f}).
         feed_history({ 1.1f, 1.3f, 1.3f, 1.4f});
 
-    using us = std::chrono::microseconds;
-    const auto [avg_price, duration] = measure_execution_time<float, us>([&company]{ return company.average_price(); });
+    float avg_price = .0;
+    const auto duration = measure_execution_time<ns>([&company, &avg_price] () { 
+        avg_price = company.calculate_average_price(); 
+    });
     std::cout << "Average price: " << avg_price << " (execution time: " << duration.count() << "ns)" << std::endl;
 }

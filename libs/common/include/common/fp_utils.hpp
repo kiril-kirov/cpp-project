@@ -1,7 +1,6 @@
 #ifndef CPP_PROJECT_COMMON_FP_UTILS_H
 #define CPP_PROJECT_COMMON_FP_UTILS_H
 
-#include <cstdint>
 #include <limits>
 #include <cmath>
 #include <type_traits>
