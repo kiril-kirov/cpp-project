@@ -61,23 +61,17 @@ This gives me the ability to easily switch between the two operating systems and
 
 ## HOWTOs
 
-TODO - update at the end of each stage, right before creating the git tag.
+Everything is tightly integrated with the `cmake` build system.  
+If you know how to work with `cmake` - feel free to use it directly, it's the most flexible way.
+
+For sample `cmake` commands, check `scripts/make.py` - it's a very simple helper script, that wraps the `cmake` usage. It supports Windows and Linux only. It's not flexible, but it covers some basic usages and it's easier for using than directly writing `cmake` commands.
 
 ## Progress
 
 This is a work-in-progress project. All of the above is just the current plan. The TODO list is below.
 
-First:
-* create a specific directory structure with two short sample libraries;
-* add cmake files (will use Ninja + VS generators);
-* set compiler options, having in mind two build configurations - debug and release;
-* add unit tests: Catch2; integrate with cmake;
-* introduce clang-format;
-* update the HOWTOs section.
-
-This will be version 0.1 (git tag) - it's basically the bare minimum for a C++ project.
-
 Next introduce:
+* clang-format (formatter);
 * clang-tidy (static analysis);
 * clang static analyzer;
 * cppcheck (static analysis);
@@ -88,10 +82,11 @@ Next introduce:
 
 This will be version 0.2 (git tag) - extends 0.1 with static/dynamic code analysis tools.
 
-Next introduce:
+Next:
 * doxygen: automatic documentation generation;
 * consider adding a tool (requires a research) for code coverage analysis;
-* consider adding include-what-you-use.
+* consider adding include-what-you-use;
+* consider using precompiled header for the unit test library.
 
 This will be version 0.3 (git tag) - extends 0.2 with nice-to-have tools.
 
