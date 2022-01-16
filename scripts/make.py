@@ -19,6 +19,9 @@ class build:
         self._execute(args)
 
     def make(self):
+        if not os.path.exists(self._build_dir):
+            self.generate()
+
         args = ['cmake', '--build', self._build_dir]
         args.extend(self._extra_build_args)
         if self._verbose:
