@@ -1,7 +1,8 @@
 #include "stats.h"
+
+#include <algorithm>
 #include <cassert>
 #include <numeric>
-#include <algorithm>
 
 using namespace std;
 
@@ -45,4 +46,4 @@ float median_sorted(const vector<float>& points)
     return (points[mid - 1] + points[mid]) / 2;
 }
 
-}
+}  // namespace cpp_project::stats

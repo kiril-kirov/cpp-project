@@ -2,6 +2,7 @@
 #define CPP_PROJECT_LIB_INVEST_STOCKS_H
 
 #include "types.h"
+
 #include <vector>
 
 namespace cpp_project::invest
