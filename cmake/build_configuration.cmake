@@ -8,3 +8,8 @@ set(cxxflags_var "CMAKE_CXX_FLAGS_${upper_build_type}")
 
 message(STATUS "C++ compiler flags: ${${cxxflags_var}}")
 message(STATUS "C compiler flags: ${${cflags_var}}")
+
+# enable link time optimization for non-debug builds
+if(NOT ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+endif()
