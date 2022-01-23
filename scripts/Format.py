@@ -58,6 +58,8 @@ class Formatter:
         clang_command = ['clang-format', '-style', 'file', '-i']
         for f in files:
             self._execute(clang_command + [str(f)])
+        
+        print(f'Done')
 
     def _execute(self, args):
         return subprocess.check_output(args).decode().split('\n')
