@@ -1,4 +1,5 @@
 import Build
+import Format
 
 import re
 import os
@@ -18,6 +19,9 @@ def define_arguments():
                         help='clean cmake configuration')
     command.add_argument('test', nargs='?',
                         help='run tests')
+    command.add_argument('format', nargs='?', default='format-local',
+                        choices=['format-local', 'format-branch', 'format-all'],
+                        help='format source code - local changes only, whole branch or all project files')
     command.add_argument('all', nargs='?',
                         help='equivalent to configure, make, run tests')
 
@@ -54,6 +58,14 @@ if __name__ == '__main__':
         builder.generate()
         builder.make()
         builder.test()
+    elif (re.match('format-.*', command)):
+        scope_str = command[command.find('-') + 1:]
+        if scope_str not in ['local', 'branch', 'all']:
+            args_definition.print_help()
+            args_definition.exit(f'\nUnsupported format command: {command}')
+
+        scope = Format.Scope[scope_str.upper()]
+        Format.Formatter(scope, ['app', 'libs']).run()
     else:
         args_definition.print_help()
         args_definition.exit(f'\nUnsupported command: {command}')
