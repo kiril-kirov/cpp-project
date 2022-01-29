@@ -65,7 +65,7 @@ if __name__ == '__main__':
             args_definition.exit(f'\nUnsupported format command: {command}')
 
         scope = Format.Scope[scope_str.upper()]
-        Format.Formatter(scope, ['app', 'libs']).run()
+        Format.Formatter(scope=scope, build_dir=builder.build_dir()).run()
     else:
         args_definition.print_help()
         args_definition.exit(f'\nUnsupported command: {command}')

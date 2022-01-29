@@ -1,7 +1,8 @@
 # for detailed explanation on each configuration, see https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 # the style is kinda based on the Google coding style, but with plenty of modifications
+# the config file is based on clang-format 12
 ---
-Language:        Cpp
+Language: Cpp
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: None
@@ -9,7 +10,7 @@ AlignConsecutiveBitFields: AcrossEmptyLinesAndComments
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: Consecutive
 AlignEscapedNewlines: Right
-AlignOperands:   Align
+AlignOperands: Align
 AlignTrailingComments: true
 AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: false
@@ -41,7 +42,7 @@ BreakConstructorInitializersBeforeComma: false
 BreakInheritanceList: AfterColon
 BreakStringLiterals: true
 ColumnLimit: 100
-CommentPragmas:  '^ IWYU pragma:'
+CommentPragmas: '^ IWYU pragma:'
 CompactNamespaces: true
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 ConstructorInitializerIndentWidth: 4
@@ -49,7 +50,7 @@ ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
 DeriveLineEnding: false
 DerivePointerAlignment: false
-DisableFormat:   false
+DisableFormat: false
 EmptyLineBeforeAccessModifier: Always
 ExperimentalAutoDetectBinPacking: false
 FixNamespaceComments: true
@@ -57,7 +58,7 @@ ForEachMacros:
   - foreach
   - Q_FOREACH
   - BOOST_FOREACH
-IncludeBlocks:   Regroup
+IncludeBlocks: Regroup
 IncludeCategories:
   # priority 0 is for the 'own' include (first line)
   - Regex:           '^".*common.*\.h[p]*"'
@@ -103,7 +104,7 @@ InsertTrailingCommas: None
 # JavaScriptWrapImports: true
 KeepEmptyLinesAtTheStartOfBlocks: true
 MacroBlockBegin: ''
-MacroBlockEnd:   ''
+MacroBlockEnd: ''
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
 # ObjCBinPackProtocolList: Never
@@ -150,8 +151,8 @@ RawStringFormats:
       - ParseTestProto
       - ParsePartialTestProto
     CanonicalDelimiter: ''
-    BasedOnStyle:    google
-ReflowComments:  true
+    BasedOnStyle: google
+ReflowComments: true
 SortIncludes: true
 # SortJavaStaticImport: Before
 SortUsingDeclarations: true
@@ -170,7 +171,7 @@ SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 2
-SpacesInAngles:  false
+SpacesInAngles: false
 SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: false
 SpacesInContainerLiterals: true

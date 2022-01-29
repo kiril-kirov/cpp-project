@@ -9,9 +9,9 @@ class Scope (enum.Enum):
     ALL    = 3
 
 class Formatter:
-    def __init__(self, scope, source_dirs = []):
+    def __init__(self, scope, build_dir):
         self._scope = scope
-        self._source_dirs = source_dirs
+        self._build_dir = build_dir
 
     def run(self):
         if self._scope == Scope.LOCAL:
@@ -41,13 +41,8 @@ class Formatter:
         self._format_files(modified_files)
 
     def _format_all(self):
-        all_source_files = []
-
-        for dir in self._source_dirs:
-            for root, _, files in os.walk(dir):
-                all_source_files.extend([os.path.join(root, f) for f in files if self._is_cxx_file(f)])
-
-        self._format_files(all_source_files)
+        cmake_args = ['cmake', '--build', self._build_dir, '--target', 'format']
+        self._execute(cmake_args)
 
     def _format_files(self, files):
         if not files:

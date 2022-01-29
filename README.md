@@ -65,7 +65,7 @@ Everything is tightly integrated with the `cmake` build system.
 If you know how to work with `cmake` - feel free to use it directly, it's the most flexible way.
 
 For sample `cmake` commands, check `scripts/run.py` - it's a simple python script, that wraps the `cmake` usages. It supports Windows and Linux only, but can easily be extended for other operating systems as well. It's not flexible, but it covers some basic usages and it's easier for using than directly writing `cmake` commands.  
-To make it even easier to use, `run.sh` and `run.bat` are added in the main direcctory.
+To make it even more handy, `run.sh` and `run.bat` are added in the main direcctory, wrapping the python script invocation.
 
 ## Progress
 
