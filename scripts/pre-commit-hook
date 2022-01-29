@@ -1,0 +1,7 @@
+#!/bin/bash
+
+"@PYTHON3_EXECUTABLE@" \
+	"@RUN_SCRIPT@" \
+	"analyze-static" \
+	"--changes" \
+	"local"

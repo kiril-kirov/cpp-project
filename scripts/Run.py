@@ -1,7 +1,6 @@
 import Build
 import Format
 
-import re
 import os
 import sys
 import platform
@@ -19,15 +18,20 @@ def define_arguments():
                         help='clean cmake configuration')
     command.add_argument('test', nargs='?',
                         help='run tests')
-    command.add_argument('format', nargs='?', default='format-local',
-                        choices=['format-local', 'format-branch', 'format-all'],
-                        help='format source code - local changes only, whole branch or all project files')
+    command.add_argument('format', nargs='?', 
+                        help='format source code; use in combination with --changes')
+    command.add_argument('analyze-static', nargs='?', 
+                        help='run static code analysis; use in combination with --changes')
     command.add_argument('all', nargs='?',
                         help='equivalent to configure, make, run tests')
 
     parser.add_argument('--type', action='store', default='Debug',
                         choices=['Debug', 'Release', 'RelWithDebInfo', 'MinSizeRel'],
                         help='build type')
+    parser.add_argument('--changes', action='store', default='local',
+                        choices=['local', 'branch', 'all'],
+                        help='''choose local changes, branch changes or all source files; 
+                                combine with "format" or "analyze-static"''')
     parser.add_argument('--verbose', action='store_const', const=True,
                         help='verbose')
 
@@ -59,14 +63,12 @@ if __name__ == '__main__':
             builder.generate()
             builder.make()
             builder.test()
-        elif (re.match('format-.*', command)):
-            scope_str = command[command.find('-') + 1:]
-            if scope_str not in ['local', 'branch', 'all']:
-                args_definition.print_help()
-                args_definition.exit(f'\nUnsupported format command: {command}')
-
-            scope = Format.Scope[scope_str.upper()]
+        elif (command == 'format'):
+            scope = Format.Scope[cmd_args.changes.upper()]
             Format.Formatter(scope=scope, build_dir=builder.build_dir()).run()
+        elif (command == 'analyze-static'):
+            scope = Format.Scope[cmd_args.changes.upper()]
+            Format.Formatter(scope=scope, build_dir=builder.build_dir(), check_only=True).run()
         else:
             args_definition.print_help()
             args_definition.exit(f'\nUnsupported command: {command}')
