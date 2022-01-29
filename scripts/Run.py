@@ -43,29 +43,33 @@ if __name__ == '__main__':
 
     builder = Build.WindowsBuild(cmd_args) if operating_system == 'Windows' else Build.LinuxBuild(cmd_args)
 
-    command = cmd_args.gen
-    if (command == 'gen'):
-        builder.generate()
-    elif (command == 'make'):
-        if not os.path.exists(builder.build_dir()):
+    try:
+        command = cmd_args.gen
+        if (command == 'gen'):
             builder.generate()
-        builder.make()
-    elif (command == 'clean'):
-        builder.clean()
-    elif (command == 'test'):
-        builder.test()
-    elif (command == 'all'):
-        builder.generate()
-        builder.make()
-        builder.test()
-    elif (re.match('format-.*', command)):
-        scope_str = command[command.find('-') + 1:]
-        if scope_str not in ['local', 'branch', 'all']:
-            args_definition.print_help()
-            args_definition.exit(f'\nUnsupported format command: {command}')
+        elif (command == 'make'):
+            if not os.path.exists(builder.build_dir()):
+                builder.generate()
+            builder.make()
+        elif (command == 'clean'):
+            builder.clean()
+        elif (command == 'test'):
+            builder.test()
+        elif (command == 'all'):
+            builder.generate()
+            builder.make()
+            builder.test()
+        elif (re.match('format-.*', command)):
+            scope_str = command[command.find('-') + 1:]
+            if scope_str not in ['local', 'branch', 'all']:
+                args_definition.print_help()
+                args_definition.exit(f'\nUnsupported format command: {command}')
 
-        scope = Format.Scope[scope_str.upper()]
-        Format.Formatter(scope=scope, build_dir=builder.build_dir()).run()
-    else:
-        args_definition.print_help()
-        args_definition.exit(f'\nUnsupported command: {command}')
+            scope = Format.Scope[scope_str.upper()]
+            Format.Formatter(scope=scope, build_dir=builder.build_dir()).run()
+        else:
+            args_definition.print_help()
+            args_definition.exit(f'\nUnsupported command: {command}')
+    except Exception as e:
+        print(f'\n{e}')
+        sys.exit(1)

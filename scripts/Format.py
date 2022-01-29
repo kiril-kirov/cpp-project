@@ -1,7 +1,5 @@
-import os
-import sys
-import subprocess
 import enum
+import subprocess
 
 class Scope (enum.Enum):
     LOCAL  = 1,
@@ -36,7 +34,7 @@ class Formatter:
     def _format_branch(self):
         branch_changes = self._execute(['git', 'diff', '--name-only', '--diff-filter', 'd', 'main'])
 
-        modified_files = [f for f in branch_changes if self._is_cxx_file(f)]
+        modified_files = [f for f in branch_changes.split('\n') if self._is_cxx_file(f)]
 
         self._format_files(modified_files)
 
@@ -57,7 +55,13 @@ class Formatter:
         print(f'Done')
 
     def _execute(self, args):
-        return subprocess.check_output(args).decode().split('\n')
+        p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        output, error = p.communicate()
+        if p.returncode != 0:
+            print(f'{output.decode()}' + '\n' if not error else f'---\n{error.decode()}\n')
+            raise RuntimeError(f'Failed to execute the command {args}')
+        else:
+            return output.decode()
 
     def _is_cxx_file(self, filename):
         return filename.split('.')[-1] in ['h', 'c', 'hpp', 'cpp', 'hxx', 'cxx']

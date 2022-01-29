@@ -1,8 +1,5 @@
-import argparse
-import platform
 import subprocess
 import os
-import sys
 
 class Build:
     def __init__(self, cmd_args):
