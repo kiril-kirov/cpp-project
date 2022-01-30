@@ -1,5 +1,6 @@
-find_program(PYTHON3_EXECUTABLE python3)
-if (PYTHON3_EXECUTABLE-NOTFOUND)
+find_package (Python3 COMPONENTS Interpreter)
+
+if (NOT Python3_FOUND)
     message(WARNING "python3 not found, commit hooks will not be installed")
 else()
     set(RUN_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/scripts/Run.py)
