@@ -17,6 +17,8 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/" ${CMAKE_MODULE_PATH})
 include(build_configuration)
 include(compiler_options)
+include(clang_format)
+include(git_hooks)
 include(unit_tests)
 
 add_subdirectory(libs)

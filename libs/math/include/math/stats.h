@@ -11,6 +11,6 @@ float average(const std::vector<float>& points);
 float median(std::vector<float> points);
 float median_sorted(const std::vector<float>& points);
 
-}  // namespace cpp_project
+}  // namespace cpp_project::stats
 
 #endif

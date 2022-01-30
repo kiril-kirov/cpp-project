@@ -64,14 +64,14 @@ This gives me the ability to easily switch between the two operating systems and
 Everything is tightly integrated with the `cmake` build system.  
 If you know how to work with `cmake` - feel free to use it directly, it's the most flexible way.
 
-For sample `cmake` commands, check `scripts/make.py` - it's a very simple helper script, that wraps the `cmake` usage. It supports Windows and Linux only. It's not flexible, but it covers some basic usages and it's easier for using than directly writing `cmake` commands.
+For sample `cmake` commands, check `scripts/run.py` - it's a simple python script, that wraps the `cmake` usages. It supports Windows and Linux only, but can easily be extended for other operating systems as well. It's not flexible, but it covers some basic usages and it's easier for using than directly writing `cmake` commands.  
+To make it even more handy, `run.sh` and `run.bat` are added in the main direcctory, wrapping the python script invocation.
 
 ## Progress
 
 This is a work-in-progress project. All of the above is just the current plan. The TODO list is below.
 
 Next introduce:
-* clang-format (formatter);
 * clang-tidy (static analysis);
 * clang static analyzer;
 * cppcheck (static analysis);

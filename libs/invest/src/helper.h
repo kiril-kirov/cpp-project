@@ -11,6 +11,6 @@ public:
     static float calculate_average_price(const candle& price);
 };
 
-}
+}  // namespace cpp_project::invest
 
 #endif

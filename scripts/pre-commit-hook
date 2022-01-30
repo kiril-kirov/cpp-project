@@ -1,0 +1,6 @@
+#!/bin/bash
+
+"@Python3_EXECUTABLE@" \
+	"@RUN_SCRIPT@" \
+	"analyze-static" \
+	"--local"
