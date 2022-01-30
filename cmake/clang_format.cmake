@@ -12,5 +12,6 @@ else()
     add_custom_target(format
         COMMAND ${CLANG_FORMAT_EXECUTABLE}
         -style file -i ${ALL_SOURCE_FILES}
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        VERBATIM)
 endif()

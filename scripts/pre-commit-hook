@@ -3,5 +3,4 @@
 "@Python3_EXECUTABLE@" \
 	"@RUN_SCRIPT@" \
 	"analyze-static" \
-	"--changes" \
-	"local"
+	"--local"

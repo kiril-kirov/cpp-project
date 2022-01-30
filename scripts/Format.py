@@ -1,7 +1,7 @@
-import enum
-import subprocess
+from enum import Enum
+from subprocess import PIPE, Popen
 
-class Scope (enum.Enum):
+class Scope (Enum):
     LOCAL  = 1,
     BRANCH = 2,
     ALL    = 3
@@ -53,7 +53,7 @@ class Formatter:
             print(f'Files for {action.lower()} not found')
             return
         print(f'{action} {len(files)} C++ file(s)...')
-        
+
         clang_command = ['clang-format', '-style', 'file']
         if self._check_only:
             clang_command.extend(['--dry-run', '--Werror'])
@@ -62,11 +62,11 @@ class Formatter:
 
         for f in files:
             self._execute(clang_command + [str(f)])
-        
+
         print(f'Done')
 
     def _execute(self, args):
-        p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = Popen(args, stdout=PIPE, stderr=PIPE)
         output, error = p.communicate()
         if p.returncode != 0:
             print(f'{output.decode()}' + '\n' if not error else f'---\n{error.decode()}\n')

@@ -1,13 +1,13 @@
-import subprocess
-import os
+from subprocess import check_call
+from os import path
 
 class Build:
-    def __init__(self, cmd_args):
+    def __init__(self, verbose):
         self._build_dir = 'build'
         self._generator = 'Ninja'
         self._extra_gen_args = []
         self._extra_build_args = []
-        self._verbose = cmd_args.verbose
+        self._verbose = verbose
         self._tests_target = 'test'
 
     def build_dir(self):
@@ -19,7 +19,7 @@ class Build:
         self._execute(args)
 
     def make(self):
-        if not os.path.exists(self._build_dir):
+        if not path.exists(self._build_dir):
             self.generate()
 
         args = ['cmake', '--build', self._build_dir]
@@ -44,30 +44,30 @@ class Build:
         self._execute(args)
 
     def _execute(self, args):
-        subprocess.check_call(args)
+        check_call(args)
 
 class SingleConfigBuild(Build):
-    def __init__(self, cmd_args):
-        super(SingleConfigBuild, self).__init__(cmd_args)
+    def __init__(self, build_type, verbose):
+        super(SingleConfigBuild, self).__init__(verbose)
 
-        self._build_dir = str(os.path.join('build', cmd_args.type.lower()))
-        self._extra_gen_args += [f'-DCMAKE_BUILD_TYPE={cmd_args.type}']
+        self._build_dir = str(path.join('build', build_type.lower()))
+        self._extra_gen_args += [f'-DCMAKE_BUILD_TYPE={build_type}']
 
 class MultiConfigBuild(Build):
-    def __init__(self, cmd_args):
-        super(MultiConfigBuild, self).__init__(cmd_args)
+    def __init__(self, build_type, verbose):
+        super(MultiConfigBuild, self).__init__(verbose)
 
-        self._extra_build_args = ['--config', cmd_args.type]
+        self._extra_build_args = ['--config', build_type]
 
 class WindowsBuild(MultiConfigBuild):
-    def __init__(self, cmd_args):
-        super(WindowsBuild, self).__init__(cmd_args)
+    def __init__(self, build_type, verbose):
+        super(WindowsBuild, self).__init__(build_type, verbose)
         self._generator = 'Visual Studio 16 2019'
         self._tests_target = 'RUN_TESTS'
         self._extra_gen_args += ['-A', 'x64']
 
 class LinuxBuild(SingleConfigBuild):
-    def __init__(self, cmd_args):
-        super(LinuxBuild, self).__init__(cmd_args)
+    def __init__(self, build_type, verbose):
+        super(LinuxBuild, self).__init__(build_type, verbose)
         self._extra_gen_args += ['-DCMAKE_C_COMPILER=clang',
                                  '-DCMAKE_CXX_COMPILER=clang++']
