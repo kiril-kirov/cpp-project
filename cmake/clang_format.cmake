@@ -12,12 +12,12 @@ execute_process(COMMAND ${CLANG_FORMAT_EXECUTABLE} --version
                 OUTPUT_VARIABLE CLANG_FORMAT_VERSION_OUTPUT
                 ERROR_QUIET
                 OUTPUT_STRIP_TRAILING_WHITESPACE)
-if (NOT CLANG_FORMAT_VERSION_OUTPUT MATCHES "^clang-format version .*")
+if (NOT CLANG_FORMAT_VERSION_OUTPUT MATCHES ".*clang-format version .*")
     message(WARNING "Cannot parse clang-format version, will not create 'format' target")
     return()
 endif()
 
-string(REGEX REPLACE "clang-format version ([0-9]+).*" "\\1"
+string(REGEX REPLACE ".*clang-format version ([0-9]+).*" "\\1"
         CLANG_FORMAT_MAJOR_VERSION "${CLANG_FORMAT_VERSION_OUTPUT}")
 if(CLANG_FORMAT_MAJOR_VERSION LESS CLANG_FORMAT_MIN_REQUIRED_VERSION)
     message(WARNING "clang-format is too old, will not create 'format' target (required: ${CLANG_FORMAT_MIN_REQUIRED_VERSION}, installed: ${CLANG_FORMAT_MAJOR_VERSION}")
